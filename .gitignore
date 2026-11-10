@@ -1,0 +1,12 @@
+# Carpetas de compilación de CLion / JetBrains
+.idea/
+cmake-build-debug/
+cmake-build-release/
+
+# Archivos de sistema u objetos locales
+*.o
+*.obj
+*.exe
+*.out
+.DS_Store
+Thumbs.db
