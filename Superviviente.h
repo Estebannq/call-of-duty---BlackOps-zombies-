@@ -21,7 +21,7 @@ private:
 public:
     Superviviente(std::string nombre);
     ~Superviviente();
-    int atacar(Personaje& personaje) override;
+    int atacar(Personaje& objetivo) override;
     void recibirDano(int cantidad);
     void mostrarInfo() override;
     void agregarObjeto(Objeto* objeto);

@@ -9,7 +9,7 @@
 class PerroInfernal : public Enemigo {
 public:
     PerroInfernal();
-    int atacar(Personaje& personaje) override;
+    int atacar(Personaje& objetivo) override;
     void mostrarInfo() override;
 };
 

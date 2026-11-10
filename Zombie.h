@@ -9,7 +9,7 @@
 class Zombie : public Enemigo {
 public:
     Zombie();
-    int atacar(Personaje& personaje) override;
+    int atacar(Personaje& objetivo) override;
     void mostrarInfo() override;
 };
 
