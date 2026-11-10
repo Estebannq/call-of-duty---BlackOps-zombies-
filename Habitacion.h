@@ -1,0 +1,13 @@
+//
+// Created by juqne on 10/11/2026.
+//
+
+#ifndef CALL_OF_DUTY___BLACKOPS_ZOMBIES__HABITACION_H
+#define CALL_OF_DUTY___BLACKOPS_ZOMBIES__HABITACION_H
+
+
+class Habitacion {
+};
+
+
+#endif //CALL_OF_DUTY___BLACKOPS_ZOMBIES__HABITACION_H
