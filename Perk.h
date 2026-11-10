@@ -4,9 +4,16 @@
 
 #ifndef CALL_OF_DUTY___BLACKOPS_ZOMBIES__PERK_H
 #define CALL_OF_DUTY___BLACKOPS_ZOMBIES__PERK_H
+#include "Objeto.h"
+#include "Superviviente.h"
 
-
-class Perk {
+class Perk : public Objeto {
+private:
+    int vidaExtra;
+public:
+    Perk(std::string nombre, int vidaExtra);
+    bool usar(Superviviente& usuario) override;
+    void mostrarInfo() override;
 };
 
 

@@ -4,9 +4,13 @@
 
 #ifndef CALL_OF_DUTY___BLACKOPS_ZOMBIES__PERROINFERNAL_H
 #define CALL_OF_DUTY___BLACKOPS_ZOMBIES__PERROINFERNAL_H
+#include "Enemigo.h"
 
-
-class PerroInfernal {
+class PerroInfernal : public Enemigo {
+public:
+    PerroInfernal();
+    int atacar(Personaje& personaje) override;
+    void mostrarInfo() override;
 };
 
 

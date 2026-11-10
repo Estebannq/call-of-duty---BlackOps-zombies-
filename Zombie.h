@@ -4,9 +4,13 @@
 
 #ifndef CALL_OF_DUTY___BLACKOPS_ZOMBIES__ZOMBIE_H
 #define CALL_OF_DUTY___BLACKOPS_ZOMBIES__ZOMBIE_H
+#include "Enemigo.h"
 
-
-class Zombie {
+class Zombie : public Enemigo {
+public:
+    Zombie();
+    int atacar(Personaje& personaje) override;
+    void mostrarInfo() override;
 };
 
 

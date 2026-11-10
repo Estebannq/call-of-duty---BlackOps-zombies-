@@ -4,9 +4,16 @@
 
 #ifndef CALL_OF_DUTY___BLACKOPS_ZOMBIES__ARMA_H
 #define CALL_OF_DUTY___BLACKOPS_ZOMBIES__ARMA_H
+#include "Objeto.h"
+#include "Superviviente.h"
 
-
-class Arma {
+class Arma : public Objeto{
+private:
+    int dano;
+public:
+    Arma(std::string nombre, int dano);
+    bool usar(Superviviente& usuario) override;
+    void mostrarInfo() override;
 };
 
 

@@ -4,10 +4,16 @@
 
 #ifndef CALL_OF_DUTY___BLACKOPS_ZOMBIES__ENEMIGO_H
 #define CALL_OF_DUTY___BLACKOPS_ZOMBIES__ENEMIGO_H
+#include "Personaje.h"
 
-
-class Enemigo {
+class Enemigo : public Personaje{
+protected:
+    int puntosRecompensa;
+public:
+    Enemigo(std::string nombre, int vidaMaxima, int dano, int puntos);
+    int getPuntosRecompensa();
 };
+
 
 
 #endif //CALL_OF_DUTY___BLACKOPS_ZOMBIES__ENEMIGO_H
