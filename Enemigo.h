@@ -10,7 +10,7 @@ class Enemigo : public Personaje{
 protected:
     int puntosRecompensa;
 public:
-    Enemigo(std::string nombre, int vidaMaxima, int dano, int puntos);
+    Enemigo(std::string nombre, int vidaMaxima, int dano, int puntosRecompensa);
     int getPuntosRecompensa();
 };
 
