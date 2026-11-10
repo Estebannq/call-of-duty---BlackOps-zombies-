@@ -68,8 +68,7 @@ El proyecto cuenta exactamente con las 10 clases especificadas en el alcance bas
 
 A continuación se detalla el diseño de clases, herencias y relaciones (composición, agregación y asociación) que estructuran el sistema:
 
-![Diagrama UML del Proyecto](<img width="2362" height="1221" alt="UMLBlackOpsZombies drawio" src="https://github.com/user-attachments/assets/fbe2d841-c349-4026-8c61-a74afdfe2ce1" />
-)
+![Diagrama UML del Proyecto](img/UMLBlackOpsZombies.drawio.png.png)
 
 ---
 
