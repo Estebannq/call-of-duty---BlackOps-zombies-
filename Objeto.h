@@ -15,6 +15,7 @@ public:
     virtual ~Objeto();
     virtual bool usar(Superviviente& usuario) = 0;
     virtual void mostrarInfo() = 0;
+    std::string getNombre();
 };
 
 

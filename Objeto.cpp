@@ -1,5 +1,10 @@
-//
-// Created by juqne on 10/11/2026.
-//
-
 #include "objeto.h"
+objeto::objeto(std::string nombre) {
+    this->nombre = nombre;
+}
+objeto::~objeto() {
+
+}
+std::string objeto::getNombre() {
+    return this->nombre;
+}

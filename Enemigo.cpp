@@ -1,12 +1,13 @@
-//
-// Created by juqne on 10/11/2026.
-//
-
 #include "Enemigo.h"
 #include <iostream>
 
-Enemigo::Enemigo(std::string nombre, int vidaMaxima, int dano, int puntosRecompensa): Personaje(nombre, vidaMaxima, dano), puntosRecompensa(puntosRecompensa){}
+enemigo::Enemigo(std::string nombre,int vidaActual,int vidaMaxima,int dano,int puntosRecompensa)
+    :personaje(nombre,vidaActual,vidaMaxima,dano) {
+    this->puntosRecompensa = puntosRecompensa;
+}
+enemigo::~Enemigo() {
 
-int Enemigo::getPuntosRecompensa() {
-    return puntosRecompensa;
+}
+int enemigo::getpuntosRecompensa() {
+    return this->puntosRecompensa;
 }
