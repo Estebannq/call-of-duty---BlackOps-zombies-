@@ -40,18 +40,18 @@ Objeto* Habitacion::recogertoObjeto(int indice) {
 
 }
 void Habitacion::mostrar() {
-//falta por realizar
+
         std::cout << "\nHabitacion: " << nombre << std::endl;
         std::cout << "Descripcion: " << descripcion << std::endl;
 
-        // Mostrar las salidas disponibles
+        
         std::cout << "Salidas: ";
         for (auto const& par : salidas) {
             std::cout << "[" << par.first << "] ";
         }
         std::cout << std::endl;
 
-        // Mostrar cantidad de enemigos y objetos
+        
         std::cout << "Enemigos vivos: " << enemigos.size() << std::endl;
         std::cout << "Objetos en el suelo: " << objetos.size() << std::endl;
 
