@@ -48,7 +48,7 @@ void Superviviente::agregarObjeto(Objeto* objeto) {
 
 void Superviviente::usarObjeto(int indice) {
     if (indice >= 0 && indice < objetos.size()) {
-        objetos[indice]->usar(); // Asumiendo que la clase Objeto tiene el método usar()
+        objetos[indice]->usar(); 
     }
 }
 
