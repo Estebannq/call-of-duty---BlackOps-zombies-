@@ -20,7 +20,7 @@ Superviviente::~Superviviente() {
 int Superviviente::atacar(Personaje& objetivo) {
     int danoRealizado = this->getDano() + this->danoArma;
     this->danoTotal += danoRealizado;
-    objetivo.recibirDano(danoRealizado); // Descomenta si tu clase Personaje tiene este método
+    objetivo.recibirDano(danoRealizado); 
     return danoRealizado;
 }
 
