@@ -15,7 +15,7 @@ protected:
     int dano;
 public:
     Personaje(std::string nombre, int vidaMaxima, int dano);
-    virtual ~Personaje();
+    virtual ~Personaje() = default;
     std::string getNombre();
     int getVidaActual();
     bool estaVivo();

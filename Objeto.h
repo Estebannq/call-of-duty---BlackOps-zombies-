@@ -12,10 +12,10 @@ protected:
     std::string nombre;
 public:
     Objeto(std::string nombre);
-    virtual ~Objeto();
+    virtual ~Objeto() = default;
     virtual bool usar(Superviviente& usuario) = 0;
     virtual void mostrarInfo() = 0;
-    std::string getNombre();
+    std::string getNombre() const;
 };
 
 

@@ -9,8 +9,7 @@
 #include <map>
 #include "Habitacion.h"
 #include "Enemigo.h"
-#include "Objeto.h"
-
+class Objeto;
 class Habitacion {
 private:
     std::string nombre;
