@@ -4,12 +4,13 @@
 
 #ifndef CALL_OF_DUTY___BLACKOPS_ZOMBIES__SUPERVIVIENTE_H
 #define CALL_OF_DUTY___BLACKOPS_ZOMBIES__SUPERVIVIENTE_H
-#include "Objeto.h"
+
 #include "Habitacion.h"
 #include "Personaje.h"
 #include <vector>
 
-
+class Objeto;
+class Habitacion;
 class Superviviente : public Personaje {
 private:
     int puntos;
@@ -34,6 +35,8 @@ public:
     void aumentarVidaMaxima(int cantidad);
     Habitacion* getHabitacionActual();
     void setHabitacionActual(Habitacion* habitacion);
+    std::string getNombre() const;
+    int getVidaMaxima() const;
 };
 
 

@@ -6,10 +6,13 @@
 #include <iostream>
 #include "Enemigo.h"
 
-PerroInfernal::PerroInfernal(): Enemigo(nombre, vidaMaxima, dano, puntosRecompensa) {}
+PerroInfernal::PerroInfernal(): Enemigo("Cerbero",50, 15, 25) {
+    this->vidaActual = vidaMaxima;
+}
 
 int PerroInfernal::atacar(Personaje& objetivo) {
     objetivo.recibirDano(dano);
+    std::cout<<"El Perro Infernal " << nombre << " ha atacado a " <<objetivo.getNombre() << ". Le genero un daño de "<< dano << std::endl;
     return dano;
 }
 void PerroInfernal::mostrarInfo() {

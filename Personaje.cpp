@@ -12,16 +12,9 @@ Personaje::Personaje(std::string nombre, int vidaMaxima, int dano) {
     (this->vidaActual < 0) ? this->vidaActual = 0 : this->vidaActual;
 }
 
-Personaje::~Personaje() {
-    std::cout<<"El personaje " << nombre << " ha sido destruido." << std::endl;
-}
-std::string Personaje::getNombre() {
-    return nombre;
-}
+std::string Personaje::getNombre() {return nombre;}
 
-int Personaje::getVidaActual(){
-    return vidaActual;
-}
+int Personaje::getVidaActual(){return vidaActual;}
 
 bool Personaje::estaVivo(){
     if (vidaActual > 0){

@@ -5,10 +5,13 @@
 #include "Zombie.h"
 #include "Enemigo.h"
 #include <iostream>
-Zombie::Zombie(): Enemigo(nombre, vidaMaxima, dano, puntosRecompensa) {}
+Zombie::Zombie(): Enemigo("Guamanga", 70, 20, 50) {
+    this->vidaActual = vidaMaxima;
+}
 
 int Zombie::atacar(Personaje& objetivo){
     objetivo.recibirDano(dano);
+    std::cout<<"El Zombie " << nombre << " ha atacado a " <<objetivo.getNombre() << ". Le genero un daño de "<< dano << std::endl;
     return dano;
 }
 
