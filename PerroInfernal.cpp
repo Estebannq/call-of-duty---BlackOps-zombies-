@@ -12,7 +12,9 @@ PerroInfernal::PerroInfernal(): Enemigo("Cerbero",50, 15, 25) {
 
 int PerroInfernal::atacar(Personaje& objetivo) {
     objetivo.recibirDano(dano);
+    std::cout<<"==================================="<<std::endl;
     std::cout<<"El Perro Infernal " << nombre << " ha atacado a " <<objetivo.getNombre() << ". Le genero un daño de "<< dano << std::endl;
+    std::cout<<"===================================\n"<<std::endl;
     return dano;
 }
 void PerroInfernal::mostrarInfo() {

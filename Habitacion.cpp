@@ -13,7 +13,7 @@ Habitacion::~Habitacion() {
         delete objetos[i];
     }
     objetos.clear();
-    std::cout<<"Habitacion con objetos barrado"<<std::endl;
+    std::cout<<"Habitacion con objetos eliminada"<<std::endl;
 }
 void Habitacion::conectar(std::string direccion, Habitacion* destino) {
     if (destino != nullptr) {

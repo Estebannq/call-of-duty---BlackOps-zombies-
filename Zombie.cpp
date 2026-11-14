@@ -8,7 +8,9 @@ Zombie::Zombie(): Enemigo("Guamanga", 70, 20, 50) {
 
 int Zombie::atacar(Personaje& objetivo){
     objetivo.recibirDano(dano);
+    std::cout<<"==================================="<<std::endl;
     std::cout<<"El Zombie " << nombre << " ha atacado a " <<objetivo.getNombre() << ". Le genero un danio de "<< dano << std::endl;
+    std::cout<<"===================================\n"<<std::endl;
     return dano;
 }
 

@@ -27,7 +27,7 @@ Juego::~Juego() {
 }
 
 void Juego::construirMapa() {
-    // 1. Crear habitaciones
+    //  Crear habitaciones
     Habitacion* entrada = new Habitacion("Sala Inicial", "Un vestibulo destruido con barricadas de madera.");
     Habitacion* pasillo = new Habitacion("Pasillo Oscuro", "Se escuchan gruñidos y pasos pesados.");
     Habitacion* laboratorio = new Habitacion("Laboratorio", "Hay maquinas expendedoras de bebidas antiguas.");
@@ -38,7 +38,7 @@ void Juego::construirMapa() {
     habitaciones["laboratorio"] = laboratorio;
     habitaciones["azotea"] = azotea;
 
-    // 2. Conectar salidas (ida y vuelta)
+    //  Conectar salidas (ida y vuelta)
     entrada->conectar("norte", pasillo);
     pasillo->conectar("sur", entrada);
 
@@ -48,19 +48,21 @@ void Juego::construirMapa() {
     laboratorio->conectar("norte", azotea);
     azotea->conectar("sur", laboratorio);
 
-    // 3. Agregar Armas y Perks al mapa
+    //Agregar Armas y Perks al mapa
     entrada->agregarObjeto(new Arma("M1911 Mejorada", 15));
     pasillo->agregarObjeto(new Perk("Juggernog", 50));
     laboratorio->agregarObjeto(new Arma("Ray Gun", 45));
 
-    // 4. Agregar Enemigos (a la habitacion y a la lista de Juego)
+    //Agregar Enemigos (a la habitacion y a la lista de Juego)
     Enemigo* perro = new PerroInfernal();
     pasillo->agregarEnemigo(perro);
     enemigos.push_back(perro);
 
     Enemigo* zombie1 = new Zombie();
     laboratorio->agregarEnemigo(zombie1);
+    laboratorio->agregarEnemigo(perro);
     enemigos.push_back(zombie1);
+    enemigos.push_back(perro);
 
     Enemigo* zombieJefe = new Zombie();
     azotea->agregarEnemigo(zombieJefe);
@@ -80,8 +82,10 @@ void Juego::iniciar() {
     bool jugando = true;
     while (jugando && jugador->estaVivo()) {
         Habitacion* actual = jugador->getHabitacionActual();
+        std::cout<<"==================================="<<std::endl;
+        jugador->mostrarInfo();
+        std::cout<<"==================================="<<std::endl;
         actual->mostrar();
-
         if (actual->hayEnemigos()) {
             std::cout << "\n--- Enemigos en la sala ---" << std::endl;
             for (Enemigo* e : actual->getEnemigos()) {
@@ -101,9 +105,9 @@ void Juego::iniciar() {
 
             if (siguiente != nullptr) {
                 jugador->setHabitacionActual(siguiente);
-                // Regenera vida automaticamente si entras a una zona despejada
                 if (!siguiente->hayEnemigos()) {
                     jugador->regenerarVida();
+                    std::cout<<"========================================="<<std::endl;
                     std::cout << "Zona despejada. Tu superviviente recupera aliento (+25 vida)." << std::endl;
                 }
                 if (siguiente == habitaciones["azotea"] && !siguiente->hayEnemigos()) {
@@ -111,7 +115,9 @@ void Juego::iniciar() {
                     jugando = false;
                 }
             } else {
+                std::cout<<"==================================="<<std::endl;
                 std::cout << "No hay salida en esa direccion." << std::endl;
+                std::cout<<"===================================\n"<<std::endl;
             }
         }
         else if (opcion == "atacar") {
@@ -119,40 +125,49 @@ void Juego::iniciar() {
                 Enemigo* objetivo = actual->getEnemigos()[0];
                 int dano = jugador->atacar(*objetivo);
                 std::cout << "Atacaste a " << objetivo->getNombre() << " por " << dano << " de dano." << std::endl;
+                std::cout<<"==================================="<<std::endl;
 
                 if (!objetivo->estaVivo()) {
                     std::cout << "¡Has eliminado a " << objetivo->getNombre() << "!" << std::endl;
+                    std::cout<<"==================================="<<std::endl;
                     jugador->registrarEliminacion(objetivo->getPuntosRecompensa());
                     actual->quitarEnemigo(objetivo);
 
-                    // Si despejas toda la sala, regeneras vida
                     if (!actual->hayEnemigos()) {
                         jugador->regenerarVida();
                         std::cout << "¡Sala despejada! Regeneras +25 de vida." << std::endl;
+                        std::cout<<"==================================="<<std::endl;
                     }
 
                     if (actual == habitaciones["azotea"] && !actual->hayEnemigos()) {
+                        std::cout<<"==================================="<<std::endl;
                         std::cout << "\n¡Despejaste la azotea y abordaste el helicoptero! ¡Victoria!" << std::endl;
+                        std::cout<<"==================================="<<std::endl;
                         jugando = false;
                     }
                 } else {
-                    // Los enemigos vivos contraatacan
+                    //los enemigos contraatacan
                     for (Enemigo* e : actual->getEnemigos()) {
                         e->atacar(*jugador);
                     }
                 }
             } else {
                 std::cout << "No hay enemigos en esta sala." << std::endl;
+                std::cout<<"==================================="<<std::endl;
             }
         }
         else if (opcion == "recoger") {
             Objeto* obj = actual->recogerObjeto(0);
             if (obj != nullptr) {
                 jugador->agregarObjeto(obj);
+                std::cout<<"==================================="<<std::endl;
                 std::cout << "Has recogido: ";
                 obj->mostrarInfo();
+                std::cout<<"===================================\n"<<std::endl;
             } else {
+                std::cout<<"==================================="<<std::endl;
                 std::cout << "No hay objetos en el suelo." << std::endl;
+                std::cout<<"==================================="<<std::endl;
             }
         }
         else if (opcion == "inventario") {
@@ -173,6 +188,7 @@ void Juego::iniciar() {
     }
 
     finalizarPartida();
+    std::cout<<"==========PROCESO DE ELIMINACION============="<<std::endl;
 }
 
 void Juego::finalizarPartida() {

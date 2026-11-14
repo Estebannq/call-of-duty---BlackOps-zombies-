@@ -20,17 +20,21 @@ int Superviviente::getDanoTotal() const {return danoTotal;}
 int Superviviente::atacar(Personaje& objetivo) {
     int danoRealizado = this->getDano() + this->danoArma;
     this->danoTotal += danoRealizado;
+    std::cout << "\n[ATAQUE] " << nombre << " ataca contra " << objetivo.getNombre()
+              << " por " << danoRealizado << " de danio!" << std::endl;
+    std::cout<<"==================================="<<std::endl;
     objetivo.recibirDano(danoRealizado);
-    std::cout << nombre << " ataca a " << objetivo.getNombre() << " causando " << danoRealizado << " de danio." << std::endl;
     return danoRealizado;
 }
 
 void Superviviente::recibirDano(int cantidad) {
     vidaActual -= cantidad;
-
     if (vidaActual < 0) {
         vidaActual = 0;
     }
+    std::cout << "[DANO RECIBIDO] " << nombre << " pierde " << cantidad
+              << " de vida. Vida restante: " << vidaActual << "/" << vidaMaxima << std::endl;
+    std::cout<<"==================================="<<std::endl;
 }
 
 void Superviviente::mostrarInfo() {
@@ -45,11 +49,17 @@ void Superviviente::agregarObjeto(Objeto* objeto) {
 
 void Superviviente::usarObjeto(int indice) {
     if (indice >= 0 && indice < static_cast<int>(objetos.size())) {
+        std::cout << "\n[OBJETO] " << nombre << " usa un objeto del inventario..." << std::endl;
         bool seConsume = objetos[indice]->usar(*this);
         if (seConsume) {
+            std::cout << "[CONSUMIDO] El objeto se ha agotado y desaparece de la mochila." << std::endl;
             delete objetos[indice];
             objetos.erase(objetos.begin() + indice);
+        } else {
+            std::cout << "[EQUIPADO] El objeto sigue guardado en tu mochila." << std::endl;
         }
+    } else {
+        std::cout << "[ERROR] Numero de objeto invalido." << std::endl;
     }
 }
 
@@ -66,17 +76,23 @@ void Superviviente::mostrarInventario() {
 }
 
 void Superviviente::regenerarVida() {
-    int cantidadRecuperacion = 25;
-
-    vidaActual += cantidadRecuperacion;
-    if (vidaActual > vidaMaxima) {
-        vidaActual = vidaMaxima;
+    if (vidaActual < vidaMaxima) {
+        int vidaAnterior = vidaActual;
+        int cantidadRecuperacion = 25;
+        vidaActual += cantidadRecuperacion;
+        if (vidaActual > vidaMaxima) {
+            vidaActual = vidaMaxima;
+        }
+        std::cout << "[CURACION] " << nombre << " recupera " << (vidaActual - vidaAnterior)
+                  << " puntos de vida (" << vidaActual << "/" << vidaMaxima << ")." << std::endl;
     }
 }
 
 void Superviviente::registrarEliminacion(int puntosGanados) {
     this->zombisEliminados++;
     this->puntos += puntosGanados;
+    std::cout << "[BAJA CONFIRMADA] +" << puntosGanados
+              << " puntos (Total: " << puntos << " pts | Bajas: " << zombisEliminados << ")." << std::endl;
 }
 
 
@@ -93,8 +109,10 @@ void Superviviente::setDanoArma(int dano) {
 }
 
 void Superviviente::aumentarVidaMaxima(int cantidad) {
-   vidaMaxima += cantidad;
+    vidaMaxima += cantidad;
     vidaActual += cantidad;
+    std::cout << "[MEJORA] ¡Vida maxima aumentada en +" << cantidad
+              << "! Nueva vida: " << vidaActual << "/" << vidaMaxima << std::endl;
 }
 
 
