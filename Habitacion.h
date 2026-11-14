@@ -10,6 +10,7 @@
 #include "Habitacion.h"
 #include "Enemigo.h"
 class Objeto;
+class Enemigo;
 class Habitacion {
 private:
     std::string nombre;
@@ -24,12 +25,12 @@ public:
     void agregarEnemigo(Enemigo* enemigo);
     void quitarEnemigo(Enemigo* enemigo);
     bool hayEnemigos();
-    void agregarObejto(Objeto* objeto);
-    Objeto* recojerObjeto(int indice);
+    void agregarObjeto(Objeto* objeto);
+    Objeto* recogerObjeto(int indice);
     void mostrar();
     std::string getNombre();
     Habitacion* getSalida(std::string direccion);
-    std::vector<Enemigo*>& getEnemigos() const;
+    const std::vector<Enemigo*>& getEnemigos() const;
 };
 
 

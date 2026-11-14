@@ -6,6 +6,7 @@
 #include <iostream>
 
 Enemigo::Enemigo(std::string nombre, int vidaMaxima, int dano, int puntosRecompensa): Personaje(nombre, vidaMaxima, dano), puntosRecompensa(puntosRecompensa){}
+Enemigo::~Enemigo(){}
 
 int Enemigo::getPuntosRecompensa() {
     return puntosRecompensa;

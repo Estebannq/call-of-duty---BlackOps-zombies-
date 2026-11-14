@@ -19,6 +19,7 @@ public:
     std::string getNombre();
     int getVidaActual();
     bool estaVivo();
+    int getDano() const;
     virtual int atacar(Personaje& objetivo) = 0;
     void recibirDano(int cantidad);
     virtual void mostrarInfo() = 0;

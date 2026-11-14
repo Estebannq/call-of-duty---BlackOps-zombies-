@@ -5,12 +5,9 @@
 #include "Personaje.h"
 #include <iostream>
 
-Personaje::Personaje(std::string nombre, int vidaMaxima, int dano) {
-    this->nombre = nombre;
-    this->vidaMaxima = vidaMaxima;
-    this->dano = dano;
-    (this->vidaActual < 0) ? this->vidaActual = 0 : this->vidaActual;
-}
+#include "Superviviente.h"
+
+Personaje::Personaje(std::string nombre, int vidaMaxima, int dano):nombre(nombre), dano(dano), vidaMaxima(vidaMaxima), vidaActual(vidaMaxima) {}
 
 std::string Personaje::getNombre() {return nombre;}
 
@@ -18,12 +15,14 @@ int Personaje::getVidaActual(){return vidaActual;}
 
 bool Personaje::estaVivo(){
     if (vidaActual > 0){
-        std::cout<<"El personaje " << nombre << " está vivo con " << vidaActual << " de vida." << std::endl;
         return true;
     } else {
         std::cout<<"El personaje " << nombre << " ha muerto." << std::endl;
         return false;
     }
+}
+int Personaje::getDano() const {
+    return dano;
 }
 
 void Personaje::recibirDano(int cantidad){
@@ -31,5 +30,5 @@ void Personaje::recibirDano(int cantidad){
     if (vidaActual < 0){
         vidaActual = 0;
     }
-    std::cout<<"El personaje " << nombre << " ha recibido " << cantidad << " de daño. Vida actual: " << vidaActual << std::endl;
+    std::cout<<"El personaje " << nombre << " ha recibido " << cantidad << " de danio. Vida actual: " << vidaActual << std::endl;
 }

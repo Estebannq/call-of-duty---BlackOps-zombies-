@@ -37,6 +37,8 @@ public:
     void setHabitacionActual(Habitacion* habitacion);
     std::string getNombre() const;
     int getVidaMaxima() const;
+    int getDanoTotal()const;
+    int getPuntos() const;
 };
 
 

@@ -9,7 +9,7 @@
 #include "Enemigo.h"
 #include <vector>
 #include <map>
-
+class Habitacion;
 class Juego {
 private:
     std::map<std::string, Habitacion*> habitaciones;
