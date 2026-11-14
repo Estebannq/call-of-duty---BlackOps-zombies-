@@ -102,6 +102,5 @@ g++ -std=c++11 main.cpp Juego.cpp Habitacion.cpp Personaje.cpp Superviviente.cpp
 
 Aquí puedes ver una captura de pantalla de la simulación del combate y el menú del inventario:
 
-![Gameplay Teatro de los Muertos](./img/screenshot.png)
-*(Ruta local recomendada de la imagen: `./img/screenshot.png`)*
-
+![Gameplay Teatro de los Muertos](img/Menu.png.png)
+![](img/Inicio.png.png)
