@@ -7,4 +7,6 @@
 
 Enemigo::Enemigo(std::string nombre, int vidaMaxima, int dano, int puntosRecompensa): Personaje(nombre, vidaMaxima, dano), puntosRecompensa(puntosRecompensa){}
 
-int Enemigo::getPuntosRecompensa() { return puntosRecompensa; }
+int Enemigo::getPuntosRecompensa() {
+    return puntosRecompensa;
+}

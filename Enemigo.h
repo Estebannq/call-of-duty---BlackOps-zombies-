@@ -11,7 +11,9 @@ protected:
     int puntosRecompensa;
 public:
     Enemigo(std::string nombre, int vidaMaxima, int dano, int puntosRecompensa);
+    virtual ~Enemigo();
     int getPuntosRecompensa();
+    virtual int  atacar(personaje& personaje);
 };
 
 
