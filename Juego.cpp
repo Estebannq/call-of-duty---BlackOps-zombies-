@@ -64,7 +64,7 @@ void Juego::construirMapa() {
     enemigos.push_back(zombie1);
     enemigos.push_back(perro);
 
-    Enemigo* zombieJefe = new Zombie();
+    Enemigo* zombieJefe = new Zombie("Jefe Supremo");
     azotea->agregarEnemigo(zombieJefe);
     enemigos.push_back(zombieJefe);
 }

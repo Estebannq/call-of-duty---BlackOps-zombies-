@@ -9,6 +9,7 @@
 class Zombie : public Enemigo {
 public:
     Zombie();
+    Zombie(std::string nombre);
     int atacar(Personaje& objetivo) override;
     void mostrarInfo() override;
 };
