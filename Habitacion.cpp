@@ -9,12 +9,19 @@ Habitacion::Habitacion(std::string nombre, std::string descripcion) {
     this->descripcion = descripcion;
 }
 Habitacion::~Habitacion() {
-    for (int i=0;i<objetos.size();i++) {
-        delete objetos[i];
+    std::cout << "[Habitacion] Eliminando: " << this->nombre << std::endl;
+
+    if (objetos.empty()) {
+        std::cout << "   -> Sin objetos en el suelo." << std::endl;
+    } else {
+        for (Objeto* o : objetos) {
+            std::cout << "   -> Objeto destruido: " << o->getNombre() << std::endl;
+            delete o;
+        }
+        objetos.clear();
     }
-    objetos.clear();
-    std::cout<<"Habitacion con objetos eliminada"<<std::endl;
 }
+
 void Habitacion::conectar(std::string direccion, Habitacion* destino) {
     if (destino != nullptr) {
         salidas[direccion] = destino;

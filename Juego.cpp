@@ -15,19 +15,34 @@ Juego::Juego() : jugador(nullptr) {
 }
 
 Juego::~Juego() {
+    std::cout << "\n================ PROCESO DE ELIMINACION ================" << std::endl;
+
+    std::cout << "\n--- 1. Liberando Habitaciones y Objetos ---" << std::endl;
     for (auto& par : habitaciones) {
         delete par.second;
     }
     habitaciones.clear();
-    delete jugador;
+
+    std::cout << "\n--- 2. Liberando Jugador e Inventario ---" << std::endl;
+    if (jugador != nullptr) {
+        std::cout << "[Superviviente] Eliminado: " << jugador->getNombre() << std::endl;
+        delete jugador;
+        jugador = nullptr;
+    }
+
+    std::cout << "\n--- 3. Liberando Enemigos ---" << std::endl;
     for (size_t i = 0; i < enemigos.size(); i++) {
+        std::cout << "[Enemigo] Eliminado: " << enemigos[i]->getNombre() << std::endl;
         delete enemigos[i];
     }
     enemigos.clear();
+
+    std::cout << "\n[OK] Toda la memoria dinamica fue liberada." << std::endl;
+    std::cout << "========================================================" << std::endl;
 }
 
 void Juego::construirMapa() {
-    //  Crear habitaciones
+    //  Crea habitaciones
     Habitacion* entrada = new Habitacion("Sala Inicial", "Un vestibulo destruido con barricadas de madera.");
     Habitacion* pasillo = new Habitacion("Pasillo Oscuro", "Se escuchan gruñidos y pasos pesados.");
     Habitacion* laboratorio = new Habitacion("Laboratorio", "Hay maquinas expendedoras de bebidas antiguas.");
@@ -59,8 +74,9 @@ void Juego::construirMapa() {
     enemigos.push_back(perro);
 
     Enemigo* zombie1 = new Zombie();
+    Enemigo* perro2 = new PerroInfernal();
     laboratorio->agregarEnemigo(zombie1);
-    laboratorio->agregarEnemigo(perro);
+    laboratorio->agregarEnemigo(perro2);
     enemigos.push_back(zombie1);
     enemigos.push_back(perro);
 
